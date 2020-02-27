@@ -251,6 +251,9 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@schematics/angular:component": {
+      "styleext": "scss"
     }
   },
   "defaultProject": "sw04"
