@@ -3,10 +3,12 @@
   <mat-list class="pt-0">
     <mat-list-item
       class="mat-list-option"
+      *ngFor="let project of projects"
+      (click)="selected.emit(project)"
     >
-      <h4 matLine>title</h4>
-      <span matLine>details</span>
-      <button type="button" mat-icon-button color="warn">
+      <h4 matLine>{{ project.title }}</h4>
+      <span matLine>{{ project.details }}</span>
+      <button type="button" mat-icon-button color="warn" (click)="deleted.emit(project); $event.stopImmediatePropagation();">
         <mat-icon>clear</mat-icon>
       </button>
     </mat-list-item>

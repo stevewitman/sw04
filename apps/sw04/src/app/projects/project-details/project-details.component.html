@@ -1,8 +1,11 @@
 <mat-card>
   <mat-card-header>
-
+    <mat-card-title *ngIf="selectedProject.id; else edit">Edit {{selectedProject.title}}</mat-card-title>
+    <ng-template #edit>
+      <mat-card-title>Create a New Project</mat-card-title>
+    </ng-template>
   </mat-card-header>
-  <form [formGroup]="group">
+  <form [formGroup]="group" (submit)="saved.emit(group.value)">
     <mat-card-content class="mb-0">
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Title</mat-label>
@@ -30,7 +33,7 @@
     </mat-card-content>
     <mat-card-actions class="d-flex flex-row-reverse mb-0">
       <button mat-button color="primary" type="submit">Submit</button>
-      <button mat-button color="warn" type="reset">Cancel</button>
+      <button mat-button color="warn" type="reset" (click)="cancelled.emit()">Cancel</button>
     </mat-card-actions>
 
   </form>
